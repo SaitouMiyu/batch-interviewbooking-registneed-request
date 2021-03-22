@@ -1,0 +1,26 @@
+package jp.rhp.service.connection;
+
+import jp.rhp.model.connection.DatabaseConnectionRepository;
+import jp.rhp.model.connection.company.CompanyDatabase;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service( "databaseConnectionService" )
+public class DatabaseConnectionServiceImpl implements DatabaseConnectionService
+{
+    @Autowired
+    private DatabaseConnectionRepository databaseConnectionRepository;
+
+    @Override
+    public void connect( CompanyDatabase database ) throws Exception
+    {
+        databaseConnectionRepository.connect( database );
+    }
+
+    @Override
+    public void connectRecopDatabase() throws Exception
+    {
+        databaseConnectionRepository.connect();
+    }
+}

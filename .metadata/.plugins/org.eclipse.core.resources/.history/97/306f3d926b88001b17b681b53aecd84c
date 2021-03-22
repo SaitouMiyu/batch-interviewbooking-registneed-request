@@ -1,0 +1,56 @@
+package jp.rhp.batch.process;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import jp.rhp.model.connection.company.CompanyDatabase;
+import jp.rhp.model.interviewbookingregistneed.setting.InterviewbookingRegistneedFactory;
+import jp.rhp.service.connection.DatabaseConnectionService;
+import jp.rhp.service.connection.recop.RecopDatabaseConnectionService;
+import jp.rhp.service.interviewbookingregistneed.forsectiontohire.SendMailService;
+
+@Component( "batchProcess" )
+public class BatchProcessImpl implements BatchProcess
+{
+    private Log LOG = LogFactory.getLog( BatchProcessImpl.class );
+
+    @Autowired
+    private InterviewbookingRegistneedFactory interviewbookingRegistneedFactory;
+
+    @Autowired
+    private SendMailService sendMailService;
+
+    @Autowired
+    private DatabaseConnectionService databaseConnectionService;
+
+//    @Autowired
+//    private RecopDatabaseConnectionService recopDatabaseConnectionService;
+
+    @Override
+    public void doMainProcess( String[] args ) throws Exception
+    {
+        CompanyDatabase database = interviewbookingRegistneedFactory.createDatabase();
+        sendMail( database );
+    }
+
+    private void sendMail( CompanyDatabase database )
+    {
+        try
+        {
+        	// TODO 以下を調査、最終的にrecopDBでコネクトさせるようにする
+        	databaseConnectionService.connect( database );
+        	// dataaccessに以下recopDBの取得処理を行う
+//        	recopDatabaseConnectionService.connectRecopDatabase();
+
+            LOG.info( String.format( "interviewbooking need remind mail -- start" ) );
+            sendMailService.send();
+            LOG.info( String.format( "interviewbooking need remind mail -- end" ) );
+        }
+        catch ( Exception e )
+        {
+            LOG.error( String.format( "interviewbooking need remind mail -- abnormal error" ), e );
+        }
+    }
+}

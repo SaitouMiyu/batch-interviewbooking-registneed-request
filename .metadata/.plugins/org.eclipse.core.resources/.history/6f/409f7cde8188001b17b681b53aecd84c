@@ -1,0 +1,64 @@
+package jp.rhp.dataaccess.connection.recop;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import jp.rhp.batch.process.BatchProcessImpl;
+import jp.rhp.model.connection.DatabaseConnectionRepository;
+import jp.rhp.model.connection.recop.RecopDatabase;
+import jp.rhp.model.connection.recop.RecopDatabaseConnectionRepository;
+
+@Repository("recopDatabaseConnectionRepository")
+public class DatabaseConnectionRecopDataAccess implements RecopDatabaseConnectionRepository
+{
+    private static SqlSessionTemplate sqlSessionTemplate;
+//    private Log LOG = LogFactory.getLog( BatchProcessImpl.class );
+
+  @Autowired
+  private DatabaseConnectionRepository databaseConnectionRepository;
+
+//  @Override
+//  public void getRecopDatabaseContents()
+//  {
+//  	// recopDBの情報を取得
+//  	RecopDatabase recopDatabase = sqlSession().selectOne( getClass().getName() + ".getRecopDbContents" );
+//
+//    LOG.info( "recopのDB情報を取得しました。" );
+////  	return recopDatabase;
+//  }
+
+  @Override
+  public void connectRecopDatabase(RecopDatabase  database) throws Exception
+  {
+	  // TODO 処理をひとまとめにする場合は以下を復活、使わない場合は削除
+  	// recopDBの情報を取得
+  	RecopDatabase recopDatabase = sqlSession().selectOne( getClass().getName() + ".getRecopDbContents" );
+//    DataSource dataSource = recopDatabase.dataSource();
+
+//  	// 取得情報を基にrecopDBに接続
+//  	 DataSource dataSource = database.dataSource();
+//      sqlSessionFactoryBean.setDataSource( dataSource );
+//      sqlSessionFactoryBean.afterPropertiesSet();
+//
+//      sqlSessionTemplate = new SqlSessionTemplate( sqlSessionFactoryBean.getObject() );
+//      dataSourceTransactionManager.setDataSource( dataSource );
+//      dataSourceTransactionManager.afterPropertiesSet();
+  }
+
+  public SqlSession  sqlSession()
+  {
+      SqlSession sqlSession = databaseConnectionRepository.sqlSession();
+      return sqlSession;
+  }
+
+//  @Override
+//  public SqlSession sqlSession()
+//  {
+//      return sqlSessionTemplate;
+//  }
+}
+

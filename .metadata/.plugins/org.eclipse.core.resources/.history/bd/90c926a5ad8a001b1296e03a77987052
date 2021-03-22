@@ -1,0 +1,10 @@
+package jp.rhp.model.interviewbookingregistneed.forjobofferposting;
+
+
+public interface SendJobOfferPostingRepository
+{
+//    public SendSectionToHireList list();
+
+	// 以下recop接続用仮Exception設定値
+    public SendSectionToHireList list() throws Exception;
+}

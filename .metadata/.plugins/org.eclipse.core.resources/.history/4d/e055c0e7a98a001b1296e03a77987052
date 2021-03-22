@@ -1,0 +1,19 @@
+# \u30CB\u30C8\u30EA\u69D8\u3000\u5411\u3051 \u901A\u77E5\u30E1\u30FC\u30EB\u914D\u4FE1\u30D0\u30C3\u30C1
+interviewbooking.registneed.sectionTohire.address      =localhost
+interviewbooking.registneed.sectionTohire.name         =public
+interviewbooking.registneed.sectionTohire.port           =5432
+interviewbooking.registneed.sectionTohire.userid        =recop
+interviewbooking.registneed.sectionTohire.password    =recop
+interviewbooking.registneed.sectionTohire.from          =hr-s@dev.test.com
+interviewbooking.registneed.sectionTohire.subject       =\u3010\u30EA\u30AF\u30AA\u30D7\u3011\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB\u767B\u9332\u306E\u3054\u4F9D\u983C
+interviewbooking.registneed.sectionTohire.body          =%KEY_SHOPNAME%\u3000\u5FA1\u4E2D\n\n\u73FE\u5728\u3001\u9762\u63A5\u767B\u9332\u304C\u53EF\u80FD\u306A\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB\u304C\u8A2D\u5B9A\u3055\u308C\u3066\u3044\u307E\u305B\u3093\u3002\n\u5E97\u8217\u30A2\u30D7\u30EA\u306E\u300C\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB\u300D\u304B\u3089\u767B\u9332\u3092\u3057\u3066\u304F\u3060\u3055\u3044\u3002\n\n\u4E0B\u8A18URL\u304B\u3089\u30ED\u30B0\u30A4\u30F3\u3057\u3066\u3054\u78BA\u8A8D\u4E0B\u3055\u3044\u3002\nhttps://nitori-recruit.jp/recruiter-sectiontohire/\n\n\u64CD\u4F5C\u65B9\u6CD5\u7B49\u306E\u3054\u4E0D\u660E\u70B9\u306F\u3001\u4E0B\u8A18\u30B5\u30FC\u30D3\u30B9\u30BB\u30F3\u30BF\u30FC\u307E\u3067\n--------------------------------------\n\u30EA\u30AF\u30AA\u30D7\u30FB\u30B5\u30FC\u30D3\u30B9\u30BB\u30F3\u30BF\u30FC\nTEL\uFF1A03-3548-8601\n(\u53D7\u4ED8\u6642\u9593 \u5E73\u65E59:00-18:00)\n--------------------------------------
+
+
+interviewbooking.registneed.sectionTohire.address      =localhost
+interviewbooking.registneed.sectionTohire.name         =public
+interviewbooking.registneed.sectionTohire.port           =5432
+interviewbooking.registneed.sectionTohire.userid        =recop
+interviewbooking.registneed.sectionTohire.password    =recop
+interviewbooking.registneed.sectionTohire.from          =hr-s@dev.test.com
+interviewbooking.registneed.sectionTohire.subject       =\u3010\u30EA\u30AF\u30AA\u30D7\u3011\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB\u767B\u9332\u306E\u3054\u4F9D\u983C
+interviewbooking.registneed.sectionTohire.body          =%KEY_SHOPNAME%\u3000\u5FA1\u4E2D\n\n\u73FE\u5728\u3001\u9762\u63A5\u767B\u9332\u304C\u53EF\u80FD\u306A\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB\u304C\u8A2D\u5B9A\u3055\u308C\u3066\u3044\u307E\u305B\u3093\u3002\n\u5E97\u8217\u30A2\u30D7\u30EA\u306E\u300C\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB\u300D\u304B\u3089\u767B\u9332\u3092\u3057\u3066\u304F\u3060\u3055\u3044\u3002\n\n\u4E0B\u8A18URL\u304B\u3089\u30ED\u30B0\u30A4\u30F3\u3057\u3066\u3054\u78BA\u8A8D\u4E0B\u3055\u3044\u3002\nhttps://nitori-recruit.jp/recruiter-sectiontohire/\n\n\u64CD\u4F5C\u65B9\u6CD5\u7B49\u306E\u3054\u4E0D\u660E\u70B9\u306F\u3001\u4E0B\u8A18\u30B5\u30FC\u30D3\u30B9\u30BB\u30F3\u30BF\u30FC\u307E\u3067\n--------------------------------------\n\u30EA\u30AF\u30AA\u30D7\u30FB\u30B5\u30FC\u30D3\u30B9\u30BB\u30F3\u30BF\u30FC\nTEL\uFF1A03-3548-8601\n(\u53D7\u4ED8\u6642\u9593 \u5E73\u65E59:00-18:00)\n--------------------------------------

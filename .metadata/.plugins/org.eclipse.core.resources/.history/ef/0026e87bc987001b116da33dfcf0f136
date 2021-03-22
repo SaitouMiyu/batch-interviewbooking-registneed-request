@@ -1,0 +1,13 @@
+package jp.rhp.model.connection;
+
+import org.apache.ibatis.session.SqlSession;
+
+import jp.rhp.model.connection.company.CompanyDatabase;
+import jp.rhp.model.connection.company.RecopDatabase;
+
+public interface DatabaseConnectionRepository
+{
+    public void connect( CompanyDatabase companyDatabase ) throws Exception;
+
+    public SqlSession sqlSession();
+}

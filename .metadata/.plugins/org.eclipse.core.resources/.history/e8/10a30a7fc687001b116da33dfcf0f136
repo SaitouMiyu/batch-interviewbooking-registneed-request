@@ -1,0 +1,8 @@
+package jp.rhp.service.connection.recop;
+
+public interface DatabaseConnectionService
+{
+
+    public void connectRecopDatabase() throws Exception;
+
+}

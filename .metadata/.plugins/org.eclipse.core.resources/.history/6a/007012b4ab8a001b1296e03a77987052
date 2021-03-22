@@ -1,0 +1,9 @@
+package jp.rhp.service.connection;
+
+import jp.rhp.model.connection.company.CompanyDatabase;
+
+public interface DatabaseConnectionService
+{
+    public void connect( CompanyDatabase database ) throws Exception;
+
+}

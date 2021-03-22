@@ -1,0 +1,7 @@
+package jp.rhp.dataaccess.connection;
+
+public class Snippet {
+	@Autowired
+	private DatabaseConnectionRepository databaseConnectionRepository;
+}
+

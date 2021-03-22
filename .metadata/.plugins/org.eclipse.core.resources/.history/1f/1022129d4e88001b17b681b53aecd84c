@@ -1,0 +1,27 @@
+package jp.rhp.service.connection.recop;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import jp.rhp.model.connection.company.RecopDatabase;
+import jp.rhp.model.connection.recop.RecopDatabaseConnectionRepository;
+
+@Service( "databaseConnectionService" )
+public class DatabaseConnectionServiceImpl implements DatabaseConnectionService
+{
+
+	// TODO えらーは三宝芭蕉が悪い
+    @Autowired
+    private RecopDatabaseConnectionRepository databaseConnectionRepository;
+
+	@Override
+    public void connectRecopDatabase() throws Exception
+    {
+		// recopDBの情報を取得
+		RecopDatabase database = databaseConnectionRepository.connectRecopDatabase();
+
+        // 取得した情報でDBに接続
+		databaseConnectionRepository.connect( database );
+    }
+
+}

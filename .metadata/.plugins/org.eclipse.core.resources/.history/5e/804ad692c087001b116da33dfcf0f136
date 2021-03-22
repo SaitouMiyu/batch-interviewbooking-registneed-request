@@ -1,0 +1,61 @@
+package jp.rhp.dataaccess.connection;
+
+import jp.rhp.model.connection.DatabaseConnectionRepository;
+import jp.rhp.model.connection.company.CompanyDatabase;
+import jp.rhp.model.interviewbookingregistneed.forjobofferposting.SendSectionToHire;
+import jp.rhp.model.interviewbookingregistneed.forjobofferposting.SendSectionToHireList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.stereotype.Repository;
+
+import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
+
+import java.util.List;
+
+import javax.sql.DataSource;
+
+@Repository( "databaseConnectionRepository" )
+public class DatabaseConnectionDataAccess implements DatabaseConnectionRepository
+{
+    @Autowired
+    private SqlSessionFactoryBean sqlSessionFactoryBean;
+
+    @Autowired
+    private DataSourceTransactionManager dataSourceTransactionManager;
+
+    private static SqlSessionTemplate sqlSessionTemplate;
+
+    @Override
+    public void connect( CompanyDatabase companyDatabase ) throws Exception
+    {
+        DataSource dataSource = companyDatabase.dataSource();
+        sqlSessionFactoryBean.setDataSource( dataSource );
+        sqlSessionFactoryBean.afterPropertiesSet();
+
+        sqlSessionTemplate = new SqlSessionTemplate( sqlSessionFactoryBean.getObject() );
+        dataSourceTransactionManager.setDataSource( dataSource );
+        dataSourceTransactionManager.afterPropertiesSet();
+    }
+
+    @Override
+    public SendSectionToHireList getRecopDb()
+    {
+
+    	// dataaccessに以下recopDBの取得処理を行う
+    	List<Object> recopDatabase = sqlSession().selectList( getClass().getName() + ".getRecopDbContents" );
+
+    	// ここの処理でpublicDBを見に行って落ちている
+
+        List<SendSectionToHire> sectionHires = sqlSession().selectList( getClass().getName() + ".listOfJobOfferPosting" );
+        return new SendSectionToHireList( recopDatabase );
+    }
+
+    @Override
+    public SqlSession sqlSession()
+    {
+        return sqlSessionTemplate;
+    }
+}

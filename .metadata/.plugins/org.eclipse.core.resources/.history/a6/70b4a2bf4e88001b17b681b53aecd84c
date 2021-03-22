@@ -1,0 +1,10 @@
+package jp.rhp.model.connection.recop;
+
+import jp.rhp.model.connection.company.RecopDatabase;
+
+public interface RecopDatabaseConnectionRepository
+{
+    public RecopDatabase connectRecopDatabase();
+//	public void connectRecopDatabase();
+    public void connectRecopDatabase( RecopDatabase recopDatabase ) throws Exception;
+}

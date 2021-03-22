@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="CommitDialog.authorValues">
+		<item value="SaitouMiyu &lt;75295395+SaitouMiyu@users.noreply.github.com&gt;"/>
+	</list>
+	<list key="CommitDialog.committerValues">
+		<item value="SaitouMiyu &lt;75295395+SaitouMiyu@users.noreply.github.com&gt;"/>
+	</list>
+	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
+		<item key="HORIZONTAL_SASH_FORM_WEIGHT" value="500,500"/>
+		<item key="STAGING_SASH_FORM_WEIGHT" value="200,200"/>
+		<item key="sortItemState" value="false"/>
+	</section>
+	<section name="GitCommitMessageComponent">
+	</section>
+	<section name="org.eclipse.egit.ui.internal.repository.CreateBranchPage$SourceSelectionDialog.dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="38"/>
+		<item key="DIALOG_Y_ORIGIN" value="-131"/>
+		<item key="DIALOG_WIDTH" value="538"/>
+		<item key="DIALOG_HEIGHT" value="484"/>
+		<item key="DIALOG_FONT_NAME" value="1|Yu Gothic UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Yu Gothic UI"/>
+	</section>
+	<section name="org.eclipse.egit.ui.internal.fetch.FetchResultDialog.dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="658"/>
+		<item key="DIALOG_Y_ORIGIN" value="223"/>
+		<item key="DIALOG_WIDTH" value="621"/>
+		<item key="DIALOG_HEIGHT" value="458"/>
+		<item key="DIALOG_FONT_NAME" value="1|Yu Gothic UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Yu Gothic UI"/>
+	</section>
+</section>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jp.rhp.dataaccess.connection.DatabaseConnectionDataAccess">
+
+	<resultMap id="RecopDatabase" type="jp.rhp.model.connection.recop.RecopDatabaseConnectionRepository">
+		<result property="companyId" column="company_id" />
+		<result property="name" column="db_name" />
+		<result property="userId" column="db_user_id" />
+		<result property="password" column="db_password" />
+	</resultMap>
+
+	<select id="getRecopDbContents" resultMap="RecopDatabase" >
+		SELECT
+  			company_id,
+			db_name,
+			db_user_id,
+			db_password
+		FROM
+		  company.company_database
+		WHERE
+		  company_id = 1;
+	</select>
+
+</mapper>
