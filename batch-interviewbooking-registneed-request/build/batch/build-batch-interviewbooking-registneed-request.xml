@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="build-batch-interviewbooking-registneed-request" default="build-batch-interviewbooking-registneed-request" basedir=".">
+
+    <target name="build-batch-interviewbooking-registneed-request" >
+        <ant antfile="build.xml" dir="${base.src.dir}/batch-interviewbooking-registneed-request/"/>
+    </target>
+
+</project>

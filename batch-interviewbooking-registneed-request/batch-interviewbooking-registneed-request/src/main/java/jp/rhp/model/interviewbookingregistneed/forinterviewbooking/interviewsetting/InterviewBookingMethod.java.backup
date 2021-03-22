@@ -1,0 +1,53 @@
+package jp.rhp.model.interviewbookingregistneed.forinterviewbooking.interviewsetting;
+
+import java.util.EnumMap;
+import java.util.Map;
+
+public enum InterviewBookingMethod
+{
+    FreeInput("自由入力"),
+    InterviewFrame("面接枠");
+
+    private String description;
+
+    InterviewBookingMethod( String description )
+    {
+        this.description = description;
+    }
+
+    String getDescription()
+    {
+        return description;
+    }
+
+    public boolean isFreeInput()
+    {
+        return FreeInput.equals( this );
+    }
+
+    public boolean isInterviewFrame()
+    {
+        return InterviewFrame.equals( this );
+    }
+
+    public boolean isNotInterviewFrame()
+    {
+        return !isInterviewFrame();
+    }
+
+    public static InterviewBookingMethod prototype()
+    {
+        return FreeInput;
+    }
+
+    static Map<InterviewBookingMethod, String> map = new EnumMap<InterviewBookingMethod, String>( InterviewBookingMethod.class );
+
+    static Map<InterviewBookingMethod, String> asOption()
+    {
+        for ( InterviewBookingMethod each : InterviewBookingMethod.values() )
+        {
+            map.put( each, each.description );
+        }
+        return map;
+    }
+}

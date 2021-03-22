@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jp.rhp.dataaccess.interviewbookingregistneed.forsectiontohire.mailmessage.MailMessageDataAccess">
+
+	<select id="nextId" resultType="java.lang.Integer">
+		SELECT nextval('mail.mail_message_id') AS id
+	</select>
+
+	<insert id="registerMailMessage" parameterType="jp.rhp.model.interviewbookingregistneed.forsectiontohire.mailmessage.MailMessage">
+		INSERT INTO mail.mail_message (
+			id,
+			from_address,
+			to_address,
+			contents,
+			subject
+		) VALUES (
+			#{id},
+			#{mailTemplate.from},
+			#{to},
+			#{mailTemplate.contents.message},
+			#{mailTemplate.contents.subject}
+		)
+	</insert>
+
+	<insert id="registerSendMessageRequest" parameterType="jp.rhp.model.interviewbookingregistneed.forsectiontohire.mailmessage.MailMessage">
+		INSERT INTO mail.send_message_request (
+			mail_message_id,
+			status
+		) VALUES (
+			#{id},
+			'NOT_YET'
+		)
+	</insert>
+
+</mapper>

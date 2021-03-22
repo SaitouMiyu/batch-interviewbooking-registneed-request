@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="build-production" default="execute" basedir=".">
+    <tstamp>
+        <format property="currentTimestamp" pattern="yyyyMMddHHmmsszzz" />
+    </tstamp>
+
+        <!-- set property -->
+        <property file="${basedir}/build_production.properties" />
+
+        <!-- default -->
+    <target name="execute">
+        <ant antfile="build_core.xml" dir="." target="all">
+                        <property name="mode"   value="production" />
+                <property name="appdir" value="${base.app.dir}" />
+        </ant>
+    </target>
+</project>

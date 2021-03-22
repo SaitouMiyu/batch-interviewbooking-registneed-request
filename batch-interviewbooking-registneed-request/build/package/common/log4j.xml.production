@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+  <appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="File" value="/usr/local/batch-rrp/logs/batch-interviewbooking-registneed-request/batch-interviewbooking-registneed-request.log"/>
+    <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d %-5p (%F:%L - %M) - %m%n" />
+    </layout>
+
+    <filter class="org.apache.log4j.varia.StringMatchFilter" >
+      <param name="StringToMatch" value="unable to find resource '/recop/ajax/response.vm'"/>
+      <param name="AcceptOnMatch" value="false" />
+    </filter>
+
+    <filter class="org.apache.log4j.varia.StringMatchFilter" >
+      <param name="StringToMatch" value="unable to find resource '/resultView.vm'"/>
+      <param name="AcceptOnMatch" value="false" />
+    </filter>
+  </appender>
+
+  <category name="jp.rhp">
+    <priority value="info"/>
+  </category>
+
+  <category name="com.systemsekkei">
+    <priority value="info"/>
+  </category>
+
+  <root>
+    <priority value="warn" />
+    <appender-ref ref="file" />
+  </root>
+
+</log4j:configuration>

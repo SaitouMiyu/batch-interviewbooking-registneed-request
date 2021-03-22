@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<context:component-scan base-package="jp.rhp.batch.process"/>
+
+	 <!-- publicDB接続内容 -->
+	<context:property-placeholder
+      location="classpath:/META-INF/spring/interviewbooking-registneed-request.properties" ignore-unresolvable="true"/>
+
+	<bean id="interviewbookingRegistneedFactory"
+        class="jp.rhp.model.interviewbookingregistneed.setting.InterviewbookingRegistneedFactory">
+		<property name="address" value="${interviewbooking.registneed.sectionTohire.address}" />
+		<property name="name" value="${interviewbooking.registneed.sectionTohire.name}" />
+		<property name="port" value="${interviewbooking.registneed.sectionTohire.port}" />
+		<property name="userid" value="${interviewbooking.registneed.sectionTohire.userid}" />
+		<property name="password" value="${interviewbooking.registneed.sectionTohire.password}" />
+		<property name="from" value="${interviewbooking.registneed.sectionTohire.from}" />
+		<property name="subject" value="${interviewbooking.registneed.sectionTohire.subject}" />
+		<property name="body" value="${interviewbooking.registneed.sectionTohire.body}" />
+	</bean>
+
+	<!-- recopDB接続内容 -->
+	<context:property-placeholder
+      location="classpath:/META-INF/spring/interviewbooking-registneed-request.properties" ignore-unresolvable="true"/>
+
+	<bean id="interviewbookingRegistneedFactoryForRecop"
+        class="jp.rhp.model.interviewbookingregistneed.setting.InterviewbookingRegistneedFactoryForRecop">
+		<property name="address" value="${interviewbooking.registneed.sectionTohire.for.recop.address}" />
+		<property name="name" value="${interviewbooking.registneed.sectionTohire.for.recop.name}" />
+		<property name="port" value="${interviewbooking.registneed.sectionTohire.for.recop.port}" />
+		<property name="userid" value="${interviewbooking.registneed.sectionTohire.for.recop.userid}" />
+		<property name="password" value="${interviewbooking.registneed.sectionTohire.for.recop.password}" />
+		<property name="from" value="${interviewbooking.registneed.sectionTohire.for.recop.from}" />
+		<property name="subject" value="${interviewbooking.registneed.sectionTohire.for.recop.subject}" />
+		<property name="body" value="${interviewbooking.registneed.sectionTohire.for.recop.body}" />
+	</bean>
+</beans>

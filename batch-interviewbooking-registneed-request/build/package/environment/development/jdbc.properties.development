@@ -1,0 +1,6 @@
+# DataSource properties
+
+jdbc.driverClassName=org.postgresql.Driver
+jdbc.url=jdbc:postgresql://localhost:5432/public
+jdbc.username=publicuser
+jdbc.password=publicuser

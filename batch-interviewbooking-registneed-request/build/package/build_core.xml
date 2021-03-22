@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="build-test" default="all" basedir=".">
+
+    <tstamp>
+        <format property="today"            pattern="yyyyMMdd" />
+        <format property="currentTimestamp" pattern="yyyyMMddHHmmsszzz" />
+    </tstamp>
+
+    <target name="build-batch-interviewbooking-registneed-request">
+        <copy tofile="${base.src.dir}batch-interviewbooking-registneed-request/src/main/resources/log4j.xml" file=
+"./common/log4j.xml.${mode}" overwrite="true"/>
+        <copy todir="${base.src.dir}batch-interviewbooking-registneed-request/src/main/resources/META-INF/spring/" overwrite="true">
+            <fileset dir="./environment/${mode}/"/>
+            <mapper type="glob" from="*.properties.${mode}"  to="*.properties"/>
+        </copy>
+        <ant antfile="build-batch-interviewbooking-registneed-request.xml" dir="../batch" />
+    </target>
+
+    <!-- backup apps -->
+    <target name="backup-apps">
+        <mkdir dir="${appdir}"/>
+        <mkdir dir="${appdir}/backup/"/>
+        <mkdir dir="${appdir}/backup/${today}"/>
+        <move todir="${appdir}/backup/${today}" failonerror="false">
+            <fileset dir="${appdir}">
+                <exclude name="backup/**/*"/>
+                <exclude name="backup"/>
+            </fileset>
+        </move>
+    </target>
+
+    <!-- copy apps -->
+    <target name="copy-apps">
+        <mkdir dir="${appdir}"/>
+        <copy todir="${appdir}batch-interviewbooking-registneed-request" >
+          <fileset dir="${base.src.dir}batch-interviewbooking-registneed-request/target" />
+        </copy>
+    </target>
+
+    <target name="build-batch-all">
+        <antcall target="build-batch-interviewbooking-registneed-request" />
+    </target>
+
+<!-- default target -->
+    <target name="all">
+        <property name="nondepends" value="true"/>
+        <ant antfile="build-all-depends.xml" dir="../" />
+
+        <antcall target="backup-apps" />
+        <antcall target="build-batch-all" />
+        <antcall target="copy-apps" />
+    </target>
+</project>

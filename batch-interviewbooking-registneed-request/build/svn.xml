@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="svn-batch-interviewbooking-registneed-request" default="co-all" basedir=".">
+        <property file="${basedir}/svn-build.properties" />
+
+        <path id="svnant.class.path">
+                <fileset dir="${svn.ant.lib}">
+                        <include name="*.jar" />
+                </fileset>
+        </path>
+
+        <typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpathref="svnant.class.path" />
+
+        <target name="co-all">
+                <delete dir="${src.dir}" />
+                <svn username="${svn.userid}" password="${svn.password}">
+                        <checkout url="${svn.url}/batch-interviewbooking-registneed-request" destPath="${src.dir}/batch-interviewbooking-registneed-request" />
+                </svn>
+        </target>
+
+        <target name="up-all">
+                <svn username="${svn.userid}" password="${svn.password}">
+                        <update dir="${src.dir}/batch-interviewbooking-registneed-request/" />
+                </svn>
+        </target>
+</project>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jp.rhp.dataaccess.interviewbookingregistneed.forinterviewbooking.InterviewbookingDataAccess">
+
+	<resultMap id="interviewbookingPosting" type="jp.rhp.model.interviewbookingregistneed.forinterviewbooking.InterviewbookingPosting">
+		<result property="sectionToHireId" column="section_to_hire_id" />
+	</resultMap>
+
+	<select id="listOfInterviewbookingPosting" resultMap="interviewbookingPosting">
+	<![CDATA[
+		SELECT
+			summary.section_to_hire_id
+		FROM
+			(
+				SELECT
+					 interview_booking_method.section_to_hire_id,
+					 coalesce(inteviews.capacity, 0) AS caparity,
+					 coalesce(inteviews.booking, 0) AS booking
+				FROM
+					hiring.interview_booking_method
+				LEFT OUTER JOIN (
+					SELECT
+						interviews.section_to_hire_id,
+						SUM(interviews.capacity) AS capacity,
+						SUM(interviews.booking) AS booking
+					FROM
+						(
+							SELECT
+								interviews.id,
+								interviews.section_to_hire_id,
+								interviews.capacity AS capacity,
+								COUNT(bookings.id) AS booking
+							FROM
+								interview_schedule.interviews
+							LEFT OUTER JOIN
+								interview_schedule.bookings ON bookings.interview_id = interviews.id
+							WHERE
+								interviews.interview_date >= date_trunc('day', now()) + INTERVAL '1 DAY'
+								AND NOT EXISTS (
+									SELECT
+										*
+									FROM
+										hiring_process.candidates_delete
+									WHERE
+										candidates_delete.candidate_id = bookings.candidate_id
+								)
+								GROUP BY interviews.id, section_to_hire_id, interviews.capacity
+						) interviews
+					GROUP BY
+						interviews.section_to_hire_id
+				) AS inteviews
+				ON
+					inteviews.section_to_hire_id = interview_booking_method.section_to_hire_id
+				WHERE
+					EXISTS(
+						SELECT
+							1
+						FROM
+							joboffer.posting_status
+						INNER JOIN
+						
+							joboffer.postings ON postings.posting_id = posting_status.posting_id
+						INNER JOIN
+							joboffer.job_offer ON job_offer.job_offer_id = postings.job_offer_id
+						INNER JOIN
+							workplace.workplace ON workplace.workplace_id = job_offer.workplace_id
+						WHERE
+							posting_status.status_type = 'OFFERING' AND
+							job_offer.job_type NOT LIKE '%登録%' AND
+							workplace.section_to_hire_id = interview_booking_method.section_to_hire_id AND
+							interview_booking_method.interview_booking_method_type = 'InterviewFrame'
+					)
+			) AS summary
+		WHERE
+			(caparity - booking) = 0
+	]]>
+	</select>
+
+	<select id="listOfFreeinputPosting" resultMap="interviewbookingPosting">
+	<![CDATA[
+		SELECT
+			section_to_hire_id
+		FROM
+			(
+				SELECT section_to_hire_id
+				FROM
+					(
+						SELECT
+							 section_to_hire_id
+						FROM
+							hiring.interview_booking_method
+						WHERE
+							interview_booking_method_type = 'FreeInput'
+					) AS interview_method
+				WHERE
+					NOT EXISTS (
+						SELECT
+							section_to_hire_id
+						FROM
+							hiring.section_to_hire_schedule
+						WHERE
+							interview_method.section_to_hire_id = section_to_hire_schedule.section_to_hire_id AND
+							section_to_hire_schedule.start_datetime >= date_trunc('day', now()) + INTERVAL '1 DAY'
+						GROUP BY section_to_hire_id
+					)
+				ORDER BY section_to_hire_id
+			)	AS interview_freeInput
+		WHERE
+			EXISTS(
+				SELECT
+					1
+				FROM
+					joboffer.posting_status
+				INNER JOIN
+					joboffer.postings ON postings.posting_id = posting_status.posting_id
+				INNER JOIN
+					joboffer.job_offer ON job_offer.job_offer_id = postings.job_offer_id
+				INNER JOIN
+					workplace.workplace ON workplace.workplace_id = job_offer.workplace_id
+				WHERE
+					posting_status.status_type = 'OFFERING' AND
+					job_offer.job_type NOT LIKE '%登録%' AND
+					workplace.section_to_hire_id = interview_freeInput.section_to_hire_id
+			)
+	]]>
+	</select>
+</mapper>

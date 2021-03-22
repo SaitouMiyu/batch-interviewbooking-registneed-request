@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="batch-interviewbooking-registneed-request" default="all" basedir=".">
+
+	<!-- set property -->
+	<property file="${basedir}/build.properties" />
+
+	<path id="classpath">
+		<fileset dir="${lib.dir}" includes="*.jar" />
+	</path>
+
+	<!-- prepare -->
+	<target name="prepare">
+		<delete dir="${target.classes.dir}" />
+		<delete dir="${target.lib.dir}" />
+		<delete file="${target.dir}/main.sh" />
+		<mkdir dir="${target.classes.dir}" />
+		<mkdir dir="${target.lib.dir}" />
+
+		<copy todir="${target.classes.dir}" >
+			<fileset dir="${src.java.dir}" includes="**/*-map.xml" ></fileset>
+		</copy>
+
+		<copy todir="${target.classes.dir}" >
+		    <fileset dir="${resources.dir}" ></fileset>
+		</copy>
+
+		<copy todir="${target.dir}" >
+			<fileset dir="${script.dir}"></fileset>
+		</copy>
+
+		<copy todir="${target.lib.dir}" >
+			<fileset dir="${lib.dir}"></fileset>
+		</copy>
+	</target>
+
+	<!-- compile -->
+	<target name="compile" depends="prepare">
+		<javac srcdir="${src.java.dir}" includeantruntime="true" destdir="${target.classes.dir}" encoding="utf-8">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<!-- default target -->
+	<target name="all" depends="compile" />
+</project>
