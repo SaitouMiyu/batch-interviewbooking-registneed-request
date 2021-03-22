@@ -1,7 +1,0 @@
-//package jp.rhp.service.connection.recop;
-//
-//public interface RecopDatabaseConnectionService
-//{
-//	// recopDB情報取得、接続処理
-//    public void connectRecopDatabase() throws Exception;
-//}

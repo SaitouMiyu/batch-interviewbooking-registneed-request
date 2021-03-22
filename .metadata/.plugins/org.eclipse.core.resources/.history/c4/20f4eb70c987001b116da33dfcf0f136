@@ -1,7 +1,0 @@
-package jp.rhp.model.connection.recop;
-
-public interface RecopDatabaseConnectionRepository
-{
-    public RecopDatabase connectRecopDatabase();
-//	public void connectRecopDatabase();
-}

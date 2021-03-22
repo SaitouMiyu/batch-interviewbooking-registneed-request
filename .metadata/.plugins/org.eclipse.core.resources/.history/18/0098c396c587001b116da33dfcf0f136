@@ -1,7 +1,0 @@
-package jp.rhp.model.connection.recop;
-
-
-public interface SendJobOfferPostingRepository
-{
-    public SendSectionToHireList list();
-}

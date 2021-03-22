@@ -1,5 +1,13 @@
 package jp.rhp.service.interviewbookingregistneed.forsectiontohire.mailmessage;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import jp.rhp.model.interviewbookingregistneed.forinterviewbooking.InterviewbookingPosting;
 import jp.rhp.model.interviewbookingregistneed.forinterviewbooking.InterviewbookingPostingList;
 import jp.rhp.model.interviewbookingregistneed.forinterviewbooking.InterviewbookingPostingRepository;
@@ -10,15 +18,6 @@ import jp.rhp.model.interviewbookingregistneed.forsectiontohire.mailmessage.Mail
 import jp.rhp.model.interviewbookingregistneed.forsectiontohire.mailmessage.MailMessageListFactory;
 import jp.rhp.model.interviewbookingregistneed.forsectiontohire.mailmessage.mailtemplate.MailTemplate;
 import jp.rhp.model.interviewbookingregistneed.setting.InterviewbookingRegistneedFactory;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service( "prepareMailMessageService" )
 public class PrepareMailMessageServiceImpl implements PrepareMailMessageService
